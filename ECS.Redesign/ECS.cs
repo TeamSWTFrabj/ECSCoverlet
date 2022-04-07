@@ -1,4 +1,5 @@
 ﻿using System;
+using ECS.Redesign;
 
 namespace ECS
 {
@@ -7,6 +8,7 @@ namespace ECS
         private readonly ITempSensor _tempSensor;
         private readonly IHeater _heater;
         private readonly IWindow _window;
+        private readonly IAlarm _alarm;
         private int _lowerTemperatureThreshold;
         private int _upperTemperatureThreshold;
 
@@ -40,12 +42,18 @@ namespace ECS
         }
 
 
-        public ECS(ITempSensor tempSensor, IHeater heater, IWindow window, int lowerTemperatureThreshold, int upperTemperatureThreshold)
+        public ECS(
+	        ITempSensor tempSensor, 
+	        IHeater heater, 
+	        IWindow window, 
+            IAlarm alarm,
+	        int lowerTemperatureThreshold, int upperTemperatureThreshold)
         {
             // Save references to dependencies
             _tempSensor = tempSensor;
             _heater = heater;
             _window = window;
+            _alarm = alarm;
 
             // Initialize properties
             UpperTemperatureThreshold = upperTemperatureThreshold;
@@ -70,6 +78,7 @@ namespace ECS
             {
                 _heater.TurnOff();
                 _window.Open();
+                _alarm.SendAlarm("Too hot in here");
             }
         }
 
