@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ECS.Redesign
 {
-	interface IAlarm
+	public interface IAlarm
 	{
 		public void SendAlarm(string alarmText);
 	}

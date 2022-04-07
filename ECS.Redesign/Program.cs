@@ -15,8 +15,10 @@ namespace ECS.Redesign
 
             var window = new Window();
 
+            var alarm = new Alarm();
+
             // Make an ECS with a threshold of 23
-            var control = new ECS(tempSensor, heater, window, 23, 27);
+            var control = new ECS(tempSensor, heater, window, alarm, 23, 27);
 
             for (int i = 1; i <= 15; i++)
             {
