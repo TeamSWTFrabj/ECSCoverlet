@@ -104,14 +104,14 @@ namespace ECS.Test.NSubstituteFakes
         #endregion
 
         #region SelfTest
-        [TestCase(true, true, true, true)]
-        [TestCase(true, true, false, false)]
-        [TestCase(true, false, true, false)]
-        [TestCase(true, false, false, false)]
-        //[TestCase(false, true, true, false)]
-        //[TestCase(false, true, false, false)]
-        //[TestCase(false, false, true, false)]
-        //[TestCase(false, false, false, false)]
+        //[TestCase(true, true, true, true)]
+        //[TestCase(true, true, false, false)]
+        //[TestCase(true, false, true, false)]
+        //[TestCase(true, false, false, false)]
+        [TestCase(false, true, true, false)]
+        [TestCase(false, true, false, false)]
+        [TestCase(false, false, true, false)]
+        [TestCase(false, false, false, false)]
         public void RunSelfTest_CombinationOfInput_CorrectOutput(
             bool tempResult, bool heaterResult, bool windowResult, bool expectedResult)
         {
@@ -156,13 +156,13 @@ namespace ECS.Test.NSubstituteFakes
             Assert.That(() => { _uut.LowerTemperatureThreshold = _uut.UpperTemperatureThreshold; }, Throws.Nothing);
         }
 
-        [Test]
-        public void Thresholds_InvalidUpperTemperatureThresholdSet_ArgumentExceptionThrown()
-        {
-            // Check that it throws when upper is illegal
-            // First parameter is a lambda expression, implicitly acting
-            Assert.That(() => { _uut.UpperTemperatureThreshold = 22; }, Throws.TypeOf<ArgumentException>());
-        }
+        //[Test]
+        //public void Thresholds_InvalidUpperTemperatureThresholdSet_ArgumentExceptionThrown()
+        //{
+        //    // Check that it throws when upper is illegal
+        //    // First parameter is a lambda expression, implicitly acting
+        //    Assert.That(() => { _uut.UpperTemperatureThreshold = 22; }, Throws.TypeOf<ArgumentException>());
+        //}
 
         [Test]
         public void Thresholds_InvalidLowerTemperatureThresholdSet_ArgumentExceptionThrown()
